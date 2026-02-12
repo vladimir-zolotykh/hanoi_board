@@ -22,4 +22,4 @@ def hanoi_view(request):
     height = 3
     board = build_board(pegs, height)
 
-    return render(request, "hanoi.html", {"board": board})
+    return render(request, "hanoi_board_app/board.html", {"board": board})
