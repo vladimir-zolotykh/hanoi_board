@@ -1,0 +1,55 @@
+<!doctype html>
+<html>
+    <head>
+        <title>Tower of Hanoi</title>
+        <style>
+         #board {
+             display: grid;
+             grid-template-columns: repeat(3, 120px);
+             gap: 10px;
+         }
+
+         .cell {
+             height: 30px;
+             display: flex;
+             align-items: center;
+             justify-content: center;
+         }
+
+         .disk {
+             border: 1px solid #000;
+             width: 80%;
+             text-align: center;
+         }
+
+         .header {
+             font-weight: bold;
+             text-align: center;
+         }
+        </style>
+    </head>
+    <body>
+
+        <h1>Tower of Hanoi</h1>
+
+        <div id="board">
+
+            <!-- Header row -->
+            <div class="header">Peg 0</div>
+            <div class="header">Peg 1</div>
+            <div class="header">Peg 2</div>
+
+            {% for row in board %}
+            {% for cell in row %}
+            <div class="cell">
+                {% if cell %}
+                <div class="disk">Disk {{ cell }}</div>
+                {% endif %}
+            </div>
+            {% endfor %}
+            {% endfor %}
+
+        </div>
+
+    </body>
+</html>
