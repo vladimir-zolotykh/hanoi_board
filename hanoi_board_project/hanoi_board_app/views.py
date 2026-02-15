@@ -2,18 +2,24 @@ from django.shortcuts import render
 
 
 def transpose(pegs):
-    n = len(pegs[0])
-    res = [[None] * n, [None] * n, [None] * n]
-    col = 0
-    row = 0
-    rev = reversed(pegs[0])
-    for row in range(n):
-        for col in range(3):
-            if pegs[row]:
-                res[row][col] = pegs[row][col]
-            else:
-                res[row][col] = None
-    return res
+    # board = []
+    # for i in range(2, -1, -1):
+    #     row = []
+    #     for j in range(3):
+    #         try:
+    #             row.append(pegs[j][i])
+    #         except IndexError:
+    #             row.append(None)
+    #     board.append(row)
+
+    # fmt: off
+    board = [
+        [pegs[0][2], None, None],
+        [pegs[0][1], None, None],
+        [pegs[0][0], None, None],
+    ]
+    # fmt: on
+    return board
 
 
 def build_board(pegs, height):
@@ -28,13 +34,6 @@ def build_board(pegs, height):
                 row.append(None)
         board.append(row)
 
-    # fmt: off
-    board = [
-        [1, None, None],
-        [2, None, None],
-        [3, None, None]
-    ]
-    # fmt: on
     board = transpose(pegs)
     return board
 
