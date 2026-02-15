@@ -2,23 +2,15 @@ from django.shortcuts import render
 
 
 def transpose(pegs):
-    # board = []
-    # for i in range(2, -1, -1):
-    #     row = []
-    #     for j in range(3):
-    #         try:
-    #             row.append(pegs[j][i])
-    #         except IndexError:
-    #             row.append(None)
-    #     board.append(row)
-
-    # fmt: off
-    board = [
-        [pegs[0][2], None, None],
-        [pegs[0][1], None, None],
-        [pegs[0][0], None, None],
-    ]
-    # fmt: on
+    board = []
+    for i in range(2, -1, -1):
+        row = []
+        for j in range(3):
+            try:
+                row.append(pegs[j][i])
+            except IndexError:
+                row.append(None)
+        board.append(row)
     return board
 
 
