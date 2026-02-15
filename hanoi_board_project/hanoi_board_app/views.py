@@ -3,9 +3,11 @@ from django.shortcuts import render
 
 def transpose(pegs):
     board = []
-    for i in range(2, -1, -1):
+    npegs = len(pegs)  # number of pegs
+    ndisks = len(pegs[0])  # number of disks
+    for i in range(ndisks - 1, -1, -1):
         row = []
-        for j in range(3):
+        for j in range(npegs):
             try:
                 row.append(pegs[j][i])
             except IndexError:
@@ -15,17 +17,6 @@ def transpose(pegs):
 
 
 def build_board(pegs, height):
-    board = []
-
-    for level in range(height - 1, -1, -1):
-        row = []
-        for peg in pegs:
-            if len(peg) > level:
-                row.append(peg[level])
-            else:
-                row.append(None)
-        board.append(row)
-
     board = transpose(pegs)
     return board
 
